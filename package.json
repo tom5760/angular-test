@@ -39,5 +39,9 @@
   "scripts": {
     "install": "node node_modules/grunt-protractor-runner/node_modules/protractor/bin/webdriver-manager update",
     "test": "grunt test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tom5760/angular-test.git"
   }
 }
