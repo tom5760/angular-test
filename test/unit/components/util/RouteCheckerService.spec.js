@@ -1,5 +1,7 @@
 'use strict';
 
+/* jshint newcap: false */
+
 describe('util.RouteCheckerService', function () {
 
   // Load the service's module
@@ -79,3 +81,5 @@ describe('util.RouteCheckerService', function () {
     });
   });
 });
+
+/* jshint newcap: true */

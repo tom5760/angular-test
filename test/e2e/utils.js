@@ -1,3 +1,5 @@
+'use strict';
+
 module.exports = {
   getLocation: function () {
     return browser.getLocationAbsUrl().then(function (url) {

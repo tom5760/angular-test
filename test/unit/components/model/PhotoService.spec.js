@@ -6,7 +6,7 @@ describe('model.PhotoService', function () {
   beforeEach(module('test.model'));
 
   var PhotoService;
-  var $timeout
+  var $timeout;
 
   // Instantiate service
   beforeEach(inject(function (_$timeout_, _PhotoService_) {
