@@ -447,6 +447,7 @@ module.exports = function (grunt) {
 
     grunt.task.run([
       'clean:dist',
+      'revision',
       'useminPrepare',
       'concurrent:dist',
       'less:development',
