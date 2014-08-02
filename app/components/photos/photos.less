@@ -1,0 +1,32 @@
+.state-main-photos {
+}
+
+.photo-grid {
+  position: relative;
+  min-height: 100px;
+
+  spinner {
+    background-color: inherit;
+  }
+
+  img {
+    height: 200px;
+  }
+
+  .thumbnail:hover {
+    background-color: @brand-info;
+  }
+
+  .photo {
+    .animated;
+
+    &.ng-enter {
+      .fadeInLeft;
+    }
+
+    &.ng-enter-stagger {
+      animation-duration: 0;
+      animation-delay: 0.2s;
+    }
+  }
+}

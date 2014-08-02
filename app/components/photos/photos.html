@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="row photo-grid">
+
+    <spinner ng-if="loading"></spinner>
+
+    <div class="col-sm-6 col-md-4 photo" ng-repeat="photo in photos">
+      <a ui-sref="main.photos.single({ id: photo.id })">
+        <div class="thumbnail">
+          <img ng-src="{{ photo.url }}" alt="{{ name }}">
+          <div class="caption">
+            <h3>{{ photo.name }}</h3>
+          </div>
+        </div>
+      </a>
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,38 @@
+@import '../bower_components/bootstrap/less/bootstrap.less';
+@import '../bower_components/animate.less/animate.less';
+
+//// Import component less styles.
+
+@import 'app/components/login/login.less';
+@import 'app/components/main/main.less';
+@import 'app/components/photos/photos.less';
+@import 'app/components/vendor/vendor.less';
+
+//// Global styles
+
+// All anchor tags should have the pointer cursor, regardless if they have a
+// href attribute.
+a {
+  cursor: pointer;
+}
+
+html {
+  // Ensure the body background fills the screen.
+  min-height: 100%;
+
+  // App looks odd if scrollbars appear and dissapear on each page, so just
+  // force them on every page.
+  overflow-y: scroll;
+}
+
+body {
+  #gradient.vertical(#929dff, #fff);
+}
+
+body > .top-view {
+  .animated;
+}
+
+//// Global variable overrides.
+
+@icon-font-path: "/bower_components/bootstrap/fonts/";

@@ -1,0 +1,48 @@
+.state-main {
+}
+
+// Set up animations
+// We can't do this inside the "state-main" class since that class is going to
+// be removed from the body midway through the animation.
+.top-view {
+  .navbar {
+    .animated;
+  }
+
+  &.ng-enter, &.ng-leave {
+    // The surrounding markup will change during the animation.  We want to
+    // fix the navbar to the top of it's parent regardless of what else gets
+    // put in.
+    .navbar {
+      position: absolute;
+      top: 0;
+      width: 100%;
+    }
+
+    // While animating, the navbar is positioned absolute (in the rules above)
+    // This makes it not take up space in it's container.  Thus, add some for
+    // the child view during the animation, so the contents don't jump around
+    // after the animation.
+    .main-view {
+      .animated;
+      display: block;
+
+      // + 1px for the navbar border
+      margin-top: @navbar-height + @navbar-margin-bottom + 1;
+    }
+  }
+
+  &.ng-enter .navbar {
+    .bounceInDown;
+  }
+
+  &.ng-leave {
+    .navbar {
+      .bounceOutUp;
+    }
+
+    .main-view {
+      .fadeOut;
+    }
+  }
+}

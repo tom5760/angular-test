@@ -1,0 +1,28 @@
+<nav class="navbar navbar-default navbar-static-top" role="navigation">
+
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" ng-click="setMainNavState()">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" ui-sref="main.photos">Test App</a>
+    </div>
+
+    <div class="collapse navbar-collapse" collapse="isMainNavCollapsed">
+      <ul class="nav navbar-nav">
+        <li ui-sref-active="active"><a ui-sref="main.photos" translate>PHOTOS.TITLE</a></li>
+        <li ui-sref-active="active"><a ui-sref="main.about" translate>ABOUT.TITLE</a></li>
+      </ul>
+
+      <p class="navbar-text navbar-right">
+        <span translate translate-value-user="{{ UserService.getUserName() }}">MAIN.LOGGED_IN</span>
+        <a ui-sref="login" class="navbar-link" translate>MAIN.LOG_OUT</a>
+      </p>
+    </div>
+  </div>
+</nav>
+
+<ui-view class="main-view"></ui-view>
