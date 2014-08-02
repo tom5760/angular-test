@@ -304,6 +304,21 @@ module.exports = function (grunt) {
       }
     },
 
+    // Concatenates templates into a single JS file.
+    ngtemplates: {
+      options: {
+        module: 'test.app',
+        append: true,
+        htmlmin: '<%= htmlmin.dist.options %>'
+      },
+      dist: {
+        expand: false,
+        cwd: '<%= yeoman.app %>',
+        src: 'components/**/*.html',
+        dest: '.tmp/concat/scripts/scripts.js'
+      }
+    },
+
     // Generates Angular constants definitions
     ngconstant: {
       options: {
@@ -453,6 +468,7 @@ module.exports = function (grunt) {
       'less:development',
       'autoprefixer',
       'concat',
+      'ngtemplates:dist',
       'ngAnnotate',
       'copy:dist',
       'cssmin',
