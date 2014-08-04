@@ -23,13 +23,8 @@ exports.config = {
   }, {
     name: 'End-to-End Tests: Safari',
     browserName: 'safari',
-    'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER,
-    build: process.env.TRAVIS_BUILD_NUMBER,
-    tags: ['CI']
-  }, {
-    name: 'End-to-End Tests: Internet Explorer 11',
-    browserName: 'internet explorer',
-    version: '11',
+    platform: 'OS X 10.9',
+    version: '7',
     'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER,
     build: process.env.TRAVIS_BUILD_NUMBER,
     tags: ['CI']
