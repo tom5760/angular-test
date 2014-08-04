@@ -10,5 +10,6 @@ install:
   - npm install
   - bower install
 script:
-  - cp test/protractor-travis.conf.js test/protractor.conf
-  - grunt
+  - grunt jshint
+  - grunt test:sauce
+  - grunt build

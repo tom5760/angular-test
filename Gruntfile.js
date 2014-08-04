@@ -385,6 +385,11 @@ module.exports = function (grunt) {
         }
       },
       test: {},
+      sauce: {
+        options: {
+          configFile: 'test/protractor-sauce.conf.js'
+        }
+      },
       debug: {
         options: {
           debug: true
@@ -448,10 +453,18 @@ module.exports = function (grunt) {
       'connect:test',
     ]);
 
-    if (target === 'debug') {
+    switch (target) {
+    case 'debug':
       grunt.task.run('protractor:debug');
-    } else {
+      break;
+
+    case 'sauce':
+      grunt.task.run('protractor:sauce');
+      break;
+
+    default:
       grunt.task.run('protractor:test');
+      break;
     }
   });
 
