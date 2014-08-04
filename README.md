@@ -8,6 +8,8 @@ and tests.
 
 [View the app on GitHub.](http://tom5760.github.io/angular-test)
 
+[![Build Status](https://travis-ci.org/tom5760/angular-test.svg?branch=master)](https://travis-ci.org/tom5760/angular-test)
+
 Quick Start
 -----------
 
