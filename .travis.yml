@@ -2,7 +2,9 @@ language: node_js
 node_js: '0.10'
 addons:
   sauce_connect:
-    secure: HxYdWPka7vAT8AacUEPRpPci/6eV4SA0wxTTXXKVNlR7vsb/aG8ibGZyGNZg1jYbOAZn72R0KpMbuyBc4Kr0SvWt6eAfp21PP1dkOa3bQPILUSEEmVEcbjmUDFVnGnx1W9Vyg91TAceiFYvk/eWiySgGCUHj7b6Bnos0JmhKvuE=
+    username: "tom5760"
+    access_key:
+      secure: "C3l47GHSojlnIUFQmOJVRTSch+7Uk1rc0Iu3YFOZEQak/48Mb2Ox/jGsxn+4PRLl/jC6EqHIj4Sh4OAedr+BLbX1wY9XzJ6vOkrKFvvsmvgsUZrV6rH0ypv9yRCcC9hqFOdohJ2AcEjmk1NtLQJfqgZxGxzaJHkM6A4WNd0qFBA="
 install:
   - npm install -g grunt-cli bower
   - npm install
