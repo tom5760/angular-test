@@ -11,5 +11,5 @@ install:
   - bower install
 script:
   - grunt jshint
-  - grunt test:sauce
+  - grunt test:unit
   - grunt build
