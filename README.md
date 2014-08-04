@@ -6,6 +6,8 @@ Author: Tom Wambold <tom5760@gmail.com>
 A fairly simple Angular app with my preferred organization, plugins, addons,
 and tests.
 
+[View the app on GitHub.](http://tom5760.github.io/angular-test)
+
 Quick Start
 -----------
 
