@@ -1,8 +1,12 @@
 language: node_js
-node_js: "0.10"
+node_js: '0.10'
+addons:
+  sauce_connect:
+    secure: HxYdWPka7vAT8AacUEPRpPci/6eV4SA0wxTTXXKVNlR7vsb/aG8ibGZyGNZg1jYbOAZn72R0KpMbuyBc4Kr0SvWt6eAfp21PP1dkOa3bQPILUSEEmVEcbjmUDFVnGnx1W9Vyg91TAceiFYvk/eWiySgGCUHj7b6Bnos0JmhKvuE=
 install:
   - npm install -g grunt-cli bower
   - npm install
   - bower install
 script:
+  - cp test/protractor-travis.conf.js test/protractor.conf
   - grunt
