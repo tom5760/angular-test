@@ -1,6 +1,8 @@
 // Protractor configuration
 // https://github.com/angular/protractor/blob/master/docs/referenceConf.js
 
+var TIMEOUT = 120000;
+
 exports.config = {
   specs: ['e2e/**/*.js'],
 
@@ -28,5 +30,11 @@ exports.config = {
     'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER,
     build: process.env.TRAVIS_BUILD_NUMBER,
     tags: ['CI']
-  }]
+  }],
+
+  getPageTimeout: TIMEOUT,
+  allScriptsTimeout: TIMEOUT,
+  jasmineNodeOpts: {
+    defaultTimeoutInterval: TIMEOUT
+  }
 };
