@@ -1,0 +1,9 @@
+<div class="form-group" ng-class="{
+    'has-success': form[name].$touched && form[name].$valid,
+    'has-error': form[name].$touched && form[name].$invalid
+  }">
+  <label>
+    <input type="checkbox" ng-class="inputClass" ng-model="model">
+    {{ ::label | translate }}
+  </label>
+</div>

@@ -1,0 +1,22 @@
+<div class="form-group" ng-class="{
+    'has-success': form[name].$touched && form[name].$valid,
+    'has-error': form[name].$touched && form[name].$invalid
+  }">
+  <label for="{{ ::name }}" translate>{{ ::label }}</label>
+  <input type="{{ ::type }}" class="form-control"
+      placeholder="{{ ::placeholderID | translate }}" ng-class="inputClass"
+      ng-model="model">
+  <span ng-if="form[name].$touched && form[name].$invalid"
+      ng-messages="form[name].$error" class="help-block">
+    <span ng-message="required"><span translate="FORMS.INVALID_REQUIRED"
+        translate-values="::{ label: label }"></span></span>
+    <span ng-message="minlength"><span translate="FORMS.INVALID_MINLENGTH"
+        translate-values="::{ label: label, minlength: finalValidator.minlength }"></span></span>
+    <span ng-message="maxlength"><span translate="FORMS.INVALID_MAXLENGTH"
+        translate-values="::{ label: label, maxlength: finalValidator.maxlength }"></span></span>
+    <span ng-message="pattern"><span translate="FORMS.INVALID_PATTERN"
+        translate-values="::{ label: label, char: findInvalidChar(finalValidator.pattern, form[name]) }"></span></span>
+    <span ng-message="email"><span translate="FORMS.INVALID_EMAIL"
+        translate-values="::{ label: label }"></span></span>
+  </span>
+</div>
