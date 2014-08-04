@@ -424,16 +424,27 @@ module.exports = function (grunt) {
     ]);
   });
 
-  grunt.registerTask('test', [
-    'clean:server',
-    'concurrent:test',
-    'less:development',
-    'autoprefixer',
-    'connect:test',
+  grunt.registerTask('test', function (target) {
+    grunt.task.run([
+      'clean:server',
+      'concurrent:test',
+      'less:development',
+      'autoprefixer',
+      'connect:test',
 
-    'karma',
-    'protractor:test'
-  ]);
+      'karma',
+    ]);
+
+    switch (target) {
+    case 'sauce':
+      grunt.task.run('protractor:sauce');
+      break;
+
+    default:
+      grunt.task.run('protractor:test');
+      break;
+    }
+  });
 
   grunt.registerTask('test:unit', [
     'clean:server',
