@@ -19,21 +19,6 @@ angular.module('test.form')
         validators: '=?'
       },
       link: function (scope, element, attrs, FormController) {
-        var onSubmit = function () {
-          scope.$apply(function () {
-            angular.forEach(FormController, function (value) {
-              if (value.hasOwnProperty('$setTouched')) {
-                value.$setTouched();
-              }
-            });
-          });
-        };
-
-        element.on('submit', onSubmit);
-        element.on('$destroy', function () {
-          element.off('submit', onSubmit);
-        });
-
         // Bind the form-wide validator to the form controller.
         if (angular.isDefined(scope.validators)) {
           FormController.$lsValidators = scope.validators;

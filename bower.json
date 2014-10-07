@@ -2,21 +2,21 @@
   "name": "test-app",
   "version": "1.0.0",
   "dependencies": {
-    "angular": "1.3.0-beta.17",
-    "angular-animate": "1.3.0-beta.17",
-    "angular-messages": "1.3.0-beta.17",
-    "angular-touch": "1.3.0-beta.17",
-    "angular-translate": "2.2.0",
-    "angular-ui-bootstrap-bower": "0.11.0",
-    "angular-ui-router": "0.2.10",
+    "angular": "1.3.0-rc.4",
+    "angular-animate": "1.3.0-rc.4",
+    "angular-messages": "1.3.0-rc.4",
+    "angular-touch": "1.3.0-rc.4",
+    "angular-translate": "2.4.0",
+    "angular-bootstrap": "0.11.2",
+    "angular-ui-router": "0.2.11",
     "bootstrap": "3.2.0",
     "animate.less": "ec582932f117bc27701ee3b31a521d18b401ab3b",
     "spin.js": "2.0.1",
     "jquery": "2.1.1"
   },
   "devDependencies": {
-    "angular-mocks": "1.3.0-beta.17",
-    "angular-scenario": "1.3.0-beta.17"
+    "angular-mocks": "1.3.0-rc.4",
+    "angular-scenario": "1.3.0-rc.4"
   },
   "appPath": "app"
 }

@@ -1,7 +1,6 @@
 'use strict';
 
 var LoginPage = require('./pages/LoginPage.js');
-var utils = require('./utils.js');
 
 describe('Login Page', function () {
   var loginPage;
@@ -62,7 +61,7 @@ describe('Login Page', function () {
     loginPage.setPassword('asdf');
     loginPage.login();
 
-    expect(utils.getLocation()).toBe('/photos');
+    expect(browser.getLocationAbsUrl()).toBe('/photos');
   });
 
   it('should go to the about page next is specified', function () {
@@ -72,6 +71,6 @@ describe('Login Page', function () {
     loginPage.setPassword('asdf');
     loginPage.login();
 
-    expect(utils.getLocation()).toBe('/about');
+    expect(browser.getLocationAbsUrl()).toBe('/about');
   });
 });
