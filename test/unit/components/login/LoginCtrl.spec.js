@@ -5,15 +5,20 @@ describe('login.LoginCtrl', function () {
   // Load the controller's module
   beforeEach(module('test.login'));
 
-  var LoginCtrl;
-  var scope;
-  var loginDeferred;
-  var MockStateService, MockStateParamsService, MockUserService;
+  var $rootScope,
+      LoginCtrl;
 
-  // Initialize the controller and a mock scope
-  beforeEach(inject(function ($q, $controller, $rootScope) {
+  var loginDeferred;
+
+  var MockStateService,
+      MockStateParamsService,
+      MockUserService;
+
+  // Initialize the controller
+  beforeEach(inject(function (_$rootScope_, $q, $controller) {
+    $rootScope = _$rootScope_;
+
     loginDeferred = $q.defer();
-    scope = $rootScope.$new();
 
     MockUserService = jasmine.createSpyObj('UserService', ['login']);
     MockUserService.login.andReturn(loginDeferred.promise);
@@ -23,47 +28,58 @@ describe('login.LoginCtrl', function () {
     MockStateParamsService = {};
 
     LoginCtrl = $controller('LoginCtrl', {
-      $scope: scope,
       $state: MockStateService,
       $stateParams: MockStateParamsService,
       UserService: MockUserService
     });
 
-    scope.forms.login = { $invalid: true };
+    LoginCtrl.form = { $invalid: true };
   }));
 
   it('should begin with empty credentials', function () {
-    expect(scope.credentials).toEqual({});
+    expect(LoginCtrl.username).not.toBeDefined();
+    expect(LoginCtrl.password).not.toBeDefined();
   });
 
   it('should not call the login method if invalid credentials', function () {
-    scope.forms.login.$invalid = true;
-    scope.login();
+    LoginCtrl.form.$invalid = true;
+
+    LoginCtrl.login();
+
     expect(MockUserService.login).not.toHaveBeenCalled();
   });
 
   it('should call login with credentials if valid', function () {
-    scope.forms.login.$invalid = false;
-    scope.login({ username: 'testuser', password: 'testpass' });
+    LoginCtrl.form.$invalid = false;
+    LoginCtrl.username = 'testuser';
+    LoginCtrl.password = 'testpass';
+
+    LoginCtrl.login();
+
     expect(MockUserService.login).toHaveBeenCalledWith('testuser', 'testpass');
   });
 
   it('should publish an error if the login fails', function () {
-    scope.forms.login.$invalid = false;
-    scope.login({ username: 'testuser', password: 'testpass' });
+    LoginCtrl.form.$invalid = false;
+    LoginCtrl.username = 'testuser';
+    LoginCtrl.password = 'testpass';
+
+    LoginCtrl.login();
 
     loginDeferred.reject();
-    scope.$digest();
+    $rootScope.$digest();
 
-    expect(scope.error).toBe(true);
+    expect(LoginCtrl.error).toBe(true);
   });
 
   it('should go to the photos state by default if login success', function () {
-    scope.forms.login.$invalid = false;
-    scope.login({ username: 'testuser', password: 'testpass' });
+    LoginCtrl.form.$invalid = false;
+    LoginCtrl.username = 'testuser';
+    LoginCtrl.password = 'testpass';
+    LoginCtrl.login();
 
     loginDeferred.resolve();
-    scope.$digest();
+    $rootScope.$digest();
 
     expect(MockStateService.go).toHaveBeenCalledWith('main.photos', {});
   });
