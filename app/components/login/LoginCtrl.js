@@ -38,7 +38,7 @@ angular.module('test.login')
 
           $state.go(next, params);
 
-        }, function failure(error) {
+        }, function failure() {
           $log.debug('Login failure');
           self.error = true;
 
