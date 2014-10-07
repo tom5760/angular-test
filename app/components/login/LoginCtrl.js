@@ -1,27 +1,27 @@
 'use strict';
 
 angular.module('test.login')
-  .controller('LoginCtrl', function ($scope, $log, $state, $stateParams, UserService) {
-    $scope.forms = {};
-    $scope.credentials = {};
-    $scope.error = false;
+  .controller('LoginCtrl', function ($log, $state, $stateParams, UserService) {
+    var self = this;
 
-    $scope.validators = {
+    this.error = false;
+
+    this.validators = {
       '*': { disabled: false },
       username: { required: true },
       password: { required: true },
     };
 
-    $scope.login = function (credentials) {
-      if ($scope.forms.login.$invalid) {
+    this.login = function () {
+      if (this.form.$invalid) {
         return;
       }
 
-      $scope.validators['*'].disabled = true;
+      this.validators['*'].disabled = true;
 
-      return UserService.login(credentials.username, credentials.password)
+      return UserService.login(this.username, this.password)
         .then(function success() {
-          $scope.error = false;
+          self.error = false;
 
           var next = 'main.photos';
           var params = {};
@@ -39,13 +39,15 @@ angular.module('test.login')
           $state.go(next, params);
 
         }, function failure(error) {
-          $log.debug('Login failure:', error);
-          $scope.error = true;
+          $log.debug('Login failure');
+          self.error = true;
 
         }).finally(function () {
-          $scope.validators['*'].disabled = false;
-          delete $scope.credentials.password;
-          $scope.forms.login.password.$setUntouched();
+          self.validators['*'].disabled = false;
+          delete self.password;
+
+          self.form.$setPristine();
+          self.form.password.$setUntouched();
         });
     };
   });

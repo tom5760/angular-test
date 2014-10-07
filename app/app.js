@@ -46,17 +46,20 @@ angular.module('test.app', [
         url: '/login?next&params',
         templateUrl: 'components/login/login.html',
         controller: 'LoginCtrl',
+        controllerAs: 'loginCtrl',
         data: { title: 'LOGIN.TITLE' }
       })
       .state('main', {
         abstract: true,
         templateUrl: 'components/main/main.html',
-        controller: 'MainCtrl'
+        controller: 'MainCtrl',
+        controllerAs: 'mainCtrl'
       })
       .state('main.photos', {
         url: '/photos',
         templateUrl: 'components/photos/photos.html',
         controller: 'PhotoCtrl',
+        controllerAs: 'photoCtrl',
         data: { title: 'PHOTOS.TITLE' }
       })
       .state('main.photos.single', {
