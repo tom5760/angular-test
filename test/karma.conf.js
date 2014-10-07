@@ -29,7 +29,7 @@ module.exports = function(config) {
       'bower_components/angular-translate/angular-translate.js',
 
       'bower_components/angular-ui-router/release/angular-ui-router.js',
-      'bower_components/angular-ui-bootstrap-bower/ui-bootstrap-tpls.js',
+      'bower_components/angular-bootstrap/ui-bootstrap-tpls.js',
 
       'bower_components/spin.js/spin.js',
 
