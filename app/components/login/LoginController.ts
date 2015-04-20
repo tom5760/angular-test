@@ -1,5 +1,7 @@
 /// <reference path="../../../bower_components/DefinitelyTyped/angularjs/angular.d.ts" />
 
+import SiteTitleService from 'components/utils/SiteTitleService';
+
 export default class LoginController {
 
   email: string;
@@ -7,7 +9,7 @@ export default class LoginController {
   busy: boolean;
   form: ng.IFormController;
 
-  constructor() {}
+  constructor(private SiteTitleService: SiteTitleService) {}
 
   clearForm() {
     this.password = null;
@@ -19,4 +21,9 @@ export default class LoginController {
     this.busy = true;
     this.clearForm();
   }
+
+  activate() {
+    this.SiteTitleService.setTitleKey('LOGIN.TITLE');
+  }
+
 }

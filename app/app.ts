@@ -3,6 +3,7 @@
 
 import directives from 'components/directives/DirectivesModule';
 import login from 'components/login/LoginModule';
+import utils from 'components/utils/UtilsModule';
 
 class AppController {
   constructor($router) {
@@ -23,7 +24,8 @@ export default angular.module('test.app', [
     'pascalprecht.translate',
 
     directives.name,
-    login.name
+    login.name,
+    utils.name
   ])
 
   .config(function (
