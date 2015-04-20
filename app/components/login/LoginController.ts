@@ -1,29 +1,48 @@
 /// <reference path="../../../bower_components/DefinitelyTyped/angularjs/angular.d.ts" />
 
 import SiteTitleService from 'components/utils/SiteTitleService';
+import ToastService from 'components/utils/ToastService';
+import UserService from 'components/model/UserService';
 
 export default class LoginController {
 
   email: string;
   password: string;
-  busy: boolean;
   form: ng.IFormController;
 
-  constructor(private SiteTitleService: SiteTitleService) {}
+  busy: boolean = false;
 
-  clearForm() {
-    this.password = null;
-    this.form.$setPristine();
-  }
-
-  submit() {
-    console.log('Log in', this.email, this.password);
-    this.busy = true;
-    this.clearForm();
-  }
+  constructor(private SiteTitleService: SiteTitleService,
+              private ToastService: ToastService,
+              private UserService: UserService) {}
 
   activate() {
     this.SiteTitleService.setTitleKey('LOGIN.TITLE');
   }
 
+  clearForm() {
+    delete this.email;
+    delete this.password;
+
+    this.form.$setPristine();
+    this.form.$setUntouched();
+    this.busy = false;
+  }
+
+  submit() {
+    console.log('Log in', this.email);
+
+    this.busy = true;
+    this.UserService.login(this.email, this.password)
+      .then(() => this.onLoginSuccess(), (err) => this.onLoginError(err))
+      .finally(() => this.clearForm())
+  }
+
+  private onLoginSuccess() {
+    console.log('LOGIN SUCCESS');
+  }
+
+  private onLoginError(err) {
+    this.ToastService.showKey(err);
+  }
 }

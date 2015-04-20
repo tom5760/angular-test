@@ -1,11 +1,13 @@
 /// <reference path="../../../bower_components/DefinitelyTyped/angularjs/angular.d.ts" />
-/// <reference path="../../../bower_components/DefinitelyTyped/angular-material/angular-material.d.ts" />
+
+import ToastService from 'components/utils/ToastService';
 
 /**
  * Provides a form-submit attribute directive, which executes an expression
  * only when the form is valid.
  */
-export default function formSubmitDirective($mdToast: angular.material.MDToastService): ng.IDirective {
+export default function formSubmitDirective(ToastService: ToastService): ng.IDirective {
+
   return {
     restrict: 'A',
     require: 'form',
@@ -22,11 +24,12 @@ export default function formSubmitDirective($mdToast: angular.material.MDToastSe
           if (form.$valid) {
             scope.$eval(attrs['formSubmit']);
           } else {
-            $mdToast.show($mdToast.simple()
-              .content('Please fix the errors in the form.'));
+            ToastService.showKey('ERRORS.FORM_INVALID');
           }
         });
       });
+
     }
   };
+
 }

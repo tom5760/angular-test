@@ -16,21 +16,23 @@
 
         <busy-spinner ng-if="login.busy"></busy-spinner>
 
-        <md-input-container>
-          <label translate>LOGIN.EMAIL</label>
-          <input name="email" type="email" ng-model="login.email" required>
-          <form-error name="email"></form-error>
-        </md-input-container>
+        <fieldset ng-disabled="login.busy">
+          <md-input-container>
+            <label translate>LOGIN.EMAIL</label>
+            <input name="email" type="email" ng-model="login.email" required>
+            <form-error name="email"></form-error>
+          </md-input-container>
 
-        <md-input-container>
-          <label translate>LOGIN.PASSWORD</label>
-          <input name="password" type="password" ng-model="login.password" required>
-          <form-error name="password"></form-error>
-        </md-input-container>
+          <md-input-container>
+            <label translate>LOGIN.PASSWORD</label>
+            <input name="password" type="password" ng-model="login.password" required>
+            <form-error name="password"></form-error>
+          </md-input-container>
 
-        <md-button type="submit" class="md-raised md-primary">
-          <span translate>LOGIN.SUBMIT</span>
-        </md-button>
+          <md-button type="submit" ng-disabled="login.busy" class="md-raised md-primary">
+            <span translate>LOGIN.SUBMIT</span>
+          </md-button>
+        </fieldset>
       </md-content>
     </form>
   </div>

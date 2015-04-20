@@ -1,3 +1,10 @@
 body {
   overflow-y: hidden;
 }
+
+fieldset {
+  display: inline;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}

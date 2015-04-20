@@ -3,6 +3,7 @@
 
 import directives from 'components/directives/DirectivesModule';
 import login from 'components/login/LoginModule';
+import model from 'components/model/ModelModule';
 import utils from 'components/utils/UtilsModule';
 
 class AppController {
@@ -25,6 +26,7 @@ export default angular.module('test.app', [
 
     directives.name,
     login.name,
+    model.name,
     utils.name
   ])
 
