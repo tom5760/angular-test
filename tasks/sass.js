@@ -1,40 +1,60 @@
-'use strict';
-
 /**
  * Compile SASS/SCSS to CSS, and run autoprefixer.
- *
- * To use, add something like this to your gulpfile.js
- *
- *    require('./tasks/sass.js');
  */
+
+'use strict';
 
 //// IMPORT MODULES
 
-var gulp = require('gulp');
-
 var autoprefixer = require('gulp-autoprefixer');
-var browserSync = require('browser-sync');
-var filter = require('gulp-filter');
+var gulp = require('gulp');
+var gutil = require('gulp-util');
+var path = require('path');
 var sass = require('gulp-sass');
 var size = require('gulp-size');
 var sourcemaps = require('gulp-sourcemaps');
+var util = require('util');
+
+var browserSync = require('./browserSync');
+
+//// CONFIG
+
+var AUTOPREFIXER_BROWSERS = [
+  'ie >= 10',
+  'ie_mob >= 10',
+  'ff >= 30',
+  'chrome >= 34',
+  'safari >= 7',
+  'opera >= 23',
+  'ios >= 7',
+  'android >= 4.4',
+  'bb >= 10'
+];
 
 //// TASKS
 
-exports.create = function (browserConfig) {
-  gulp.task('styles', function () {
-    return gulp.src('app/app.scss')
-      .pipe(sourcemaps.init())
-      .pipe(sass({
-        precision: 10,
-        onError: console.error.bind(console, 'Sass error:')
-      }))
-      .pipe(autoprefixer({ browsers: browserConfig }))
-      .pipe(gulp.dest('.tmp/styles'))
-      .pipe(sourcemaps.write())
-      .pipe(gulp.dest('.tmp/styles'))
-      .pipe(size({ title: 'styles' }))
-      .pipe(filter('**/*.css'))
-      .pipe(browserSync.reload({ stream: true }));
-  });
-};
+function onError(err) {
+  var message = util.format('(SASS) %s[%d, %d]: %s',
+      path.relative(__dirname, err.file), err.line, err.column, err.message);
+
+  console.error(message);
+  browserSync.notify(message, 5000);
+
+  if (!browserSync.active) {
+    throw new gutil.PluginError('gulp-sass', err);
+  }
+}
+
+gulp.task('sass', function () {
+  return gulp.src('app/app.scss')
+    .pipe(sourcemaps.init())
+
+    .pipe(sass({ onError: onError }))
+    .pipe(autoprefixer({ browsers: AUTOPREFIXER_BROWSERS }))
+
+    .pipe(sourcemaps.write('../maps'))
+    .pipe(gulp.dest('.tmp/styles'))
+    .pipe(size({ title: 'styles' }))
+
+    .pipe(browserSync.stream({ match: '**/*.css' }));
+});

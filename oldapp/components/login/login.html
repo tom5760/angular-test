@@ -1,0 +1,29 @@
+<div class="container">
+
+  <div class="box">
+
+    <spinner ng-if="loginCtrl.validators['*'].disabled"></spinner>
+
+    <form name="loginCtrl.form" novalidate role="form"
+        validators="loginCtrl.validators"
+        ng-model-options="{ updateOn: 'submit blur' }"
+        ng-submit="loginCtrl.login()">
+      <h1>Log In</h1>
+
+      <div class="alert alert-info" translate>LOGIN.HELP</div>
+
+      <div class="alert alert-danger" ng-if="loginCtrl.error" translate>LOGIN.ERROR</div>
+
+      <form-input name="username" type="text" label="LOGIN.USERNAME"
+          input-class="input-lg" model="loginCtrl.username"></form-input>
+
+      <form-input name="password" type="password" label="LOGIN.PASSWORD"
+          input-class="input-lg" model="loginCtrl.password"></form-input>
+
+      <form-input type="submit" label="LOGIN.LOGIN"
+          input-class="btn btn-primary btn-lg btn-block"></form-input>
+
+    </form>
+  </div>
+
+</div>

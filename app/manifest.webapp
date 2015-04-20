@@ -1,0 +1,25 @@
+{
+  "version": "1.0.0",
+  "name": "Angular Example",
+  "launch_path": "/index.html",
+  "description": "Example AngularJS application",
+  "icons": {
+    "128": "/images/icon-128.png"
+  },
+  "developer": {
+    "name": "Tom Wambold",
+    "url": "http://github.com/tom5760/angular-test"
+  },
+  "installs_allowed_from": [
+    "*"
+  ],
+  "default_locale": "en",
+  "permissions": {
+  },
+  "locales": {
+    "en": {
+      "name": "Angular Example",
+      "description": "Example AngularJS application"
+    }
+  }
+}

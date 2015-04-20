@@ -1,0 +1,11 @@
+.login-container {
+
+  .login-box {
+    width: 100%;
+
+    @media (min-width: 400px) {
+      width: 400px;
+    }
+  }
+
+}

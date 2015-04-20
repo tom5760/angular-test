@@ -1,28 +1,35 @@
-<div class="container">
+<div
+    class="login-container"
+    layout="column"
+    layout-align="center center"
+    layout-fill>
 
-  <div class="box">
+  <div class="login-box md-whiteframe-z2">
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>Login</h2>
+      </div>
+    </md-toolbar>
 
-    <spinner ng-if="loginCtrl.validators['*'].disabled"></spinner>
+    <form name="login.form" form-submit="login.submit()">
+      <md-content layout="column" layout-padding>
 
-    <form name="loginCtrl.form" novalidate role="form"
-        validators="loginCtrl.validators"
-        ng-model-options="{ updateOn: 'submit blur' }"
-        ng-submit="loginCtrl.login()">
-      <h1>Log In</h1>
+        <busy-spinner ng-if="login.busy"></busy-spinner>
 
-      <div class="alert alert-info" translate>LOGIN.HELP</div>
+        <md-input-container>
+          <label>Email</label>
+          <input name="email" type="email" ng-model="login.email" required>
+          <form-error name="email"></form-error>
+        </md-input-container>
 
-      <div class="alert alert-danger" ng-if="loginCtrl.error" translate>LOGIN.ERROR</div>
+        <md-input-container>
+          <label>Password</label>
+          <input name="password" type="password" ng-model="login.password" required>
+          <form-error name="password"></form-error>
+        </md-input-container>
 
-      <form-input name="username" type="text" label="LOGIN.USERNAME"
-          input-class="input-lg" model="loginCtrl.username"></form-input>
-
-      <form-input name="password" type="password" label="LOGIN.PASSWORD"
-          input-class="input-lg" model="loginCtrl.password"></form-input>
-
-      <form-input type="submit" label="LOGIN.LOGIN"
-          input-class="btn btn-primary btn-lg btn-block"></form-input>
-
+        <md-button type="submit" class="md-raised md-primary">Log In</md-button>
+      </md-content>
     </form>
   </div>
 

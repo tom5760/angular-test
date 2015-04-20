@@ -1,0 +1,110 @@
+<!doctype html>
+<html ng-app="test.app">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Test App">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
+
+    <title ng-bind-template="{{ $state.current.data.title | translate }} - {{ ::'SITE_TITLE' | translate }}">Test App</title>
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <!--
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="icon" sizes="196x196" href="images/touch/chrome-touch-icon-196x196.png">
+    -->
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <!--
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="LifeShield Portal">
+    -->
+
+    <!-- Tile icon for Win8 (144x144 + tile color) -->
+    <!--
+    <meta name="msapplication-TileImage" content="images/touch/ms-touch-icon-144x144-precomposed.png">
+    <meta name="msapplication-TileColor" content="#3372DF">
+    -->
+
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+    <!-- build:css(.) styles/vendor.css -->
+    <!-- endbuild -->
+
+    <!-- build:css(.tmp) styles/app.css -->
+    <link rel="stylesheet" href="styles/app.css">
+    <!-- endbuild -->
+  </head>
+
+  <body ng-class="$state.current.name | stateToClass">
+
+    <ui-view class="top-view"></ui-view>
+
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
+    <!--
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-XXXXX-X');
+      ga('send', 'pageview');
+    </script>
+    -->
+
+    <!-- build:js(.) scripts/vendor.js -->
+
+    <!-- Seems to be a bug in beta jqlite that breaks animations when logging
+         out sometimes.  Using real jquery seems to fix it. -->
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+
+    <script src="bower_components/angular/angular.js"></script>
+
+    <script src="bower_components/angular-animate/angular-animate.js"></script>
+    <script src="bower_components/angular-messages/angular-messages.js"></script>
+    <script src="bower_components/angular-touch/angular-touch.js"></script>
+
+    <script src="bower_components/angular-translate/angular-translate.js"></script>
+
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+
+    <script src="bower_components/spin.js/spin.js"></script>
+    <!-- endbuild -->
+
+    <!-- build:js({.tmp,app}) scripts/scripts.js -->
+    <script src="app.js"></script>
+    <script src="config.js"></script>
+
+    <script src="components/translation/TranslationModule.js"></script>
+    <script src="components/translation/en.js"></script>
+
+    <script src="components/model/ModelModule.js"></script>
+    <script src="components/model/UserService.js"></script>
+    <script src="components/model/PhotoService.js"></script>
+
+    <script src="components/main/MainModule.js"></script>
+    <script src="components/main/MainCtrl.js"></script>
+
+    <script src="components/login/LoginModule.js"></script>
+    <script src="components/login/LoginCtrl.js"></script>
+
+    <script src="components/photos/PhotoModule.js"></script>
+    <script src="components/photos/PhotoCtrl.js"></script>
+
+    <script src="components/form/FormModule.js"></script>
+    <script src="components/form/formDirective.js"></script>
+    <script src="components/form/formInputDirective.js"></script>
+    <script src="components/form/ValidatorFactory.js"></script>
+
+    <script src="components/util/UtilModule.js"></script>
+    <script src="components/util/RouteCheckerService.js"></script>
+    <script src="components/util/stateToClassFilter.js"></script>
+
+    <script src="components/vendor/VendorModule.js"></script>
+    <script src="components/vendor/spinnerDirective.js"></script>
+    <!-- endbuild -->
+  </body>
+</html>

@@ -13,6 +13,8 @@ and tests.
 Quick Start
 -----------
 
+* Install GraphicsMagick
+
 * Install [Node.js](http://nodejs.org/).
 * Install [Bower][bower] and [Grunt][grunt] to your system:
 

@@ -1,0 +1,19 @@
+{
+  "name": "Angular Example",
+  "short_name": "AngExample",
+  "icons": [{
+      "src": "images/icon-128.png",
+      "sizes": "128x128"
+    }, {
+      "src": "images/icon-152.png",
+      "sizes": "152x152"
+    }, {
+      "src": "images/icon-144.png",
+      "sizes": "144x144"
+    }, {
+      "src": "images/icon-192.png",
+      "sizes": "192x192"
+    }],
+  "start_url": "/index.html?homescreen=1",
+  "display": "standalone"
+}
