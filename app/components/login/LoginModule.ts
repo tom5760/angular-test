@@ -1,8 +1,7 @@
-/// <reference path="../../../bower_components/DefinitelyTyped/angularjs/angular.d.ts" />
+/// <reference path="../../../node_modules/DefinitelyTyped/angularjs/angular.d.ts" />
 
-import en from 'components/login/en';
-
-import LoginController from 'components/login/LoginController';
+import en from './en';
+import LoginController from './LoginController';
 
 var login: ng.IModule = angular.module('test.login', [
     'pascalprecht.translate',

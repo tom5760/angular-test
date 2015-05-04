@@ -1,5 +1,5 @@
-/// <reference path="../../../bower_components/DefinitelyTyped/angularjs/angular.d.ts" />
-/// <reference path="../../../bower_components/DefinitelyTyped/angular-translate/angular-translate.d.ts" />
+/// <reference path="../../../node_modules/DefinitelyTyped/angularjs/angular.d.ts" />
+/// <reference path="../../../node_modules/DefinitelyTyped/angular-translate/angular-translate.d.ts" />
 
 export default class SiteTitleService {
   constructor(private $rootScope: ng.IRootScopeService,

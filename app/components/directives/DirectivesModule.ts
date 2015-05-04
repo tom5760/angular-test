@@ -1,12 +1,12 @@
-/// <reference path="../../../bower_components/DefinitelyTyped/angularjs/angular.d.ts" />
+/// <reference path="../../../node_modules/DefinitelyTyped/angularjs/angular.d.ts" />
 
-import busySpinnerDirective from 'components/directives/busySpinnerDirective';
-import formErrorDirective from 'components/directives/formErrorDirective';
-import formSubmitDirective from 'components/directives/formSubmitDirective';
+import busySpinnerDirective from './busySpinnerDirective';
+import formErrorDirective from './formErrorDirective';
+import formSubmitDirective from './formSubmitDirective';
 
 var directives: ng.IModule = angular.module('test.directives', [
     'ngMessages'
-]);
+  ]);
 export default directives;
 
 directives.directive('busySpinner', busySpinnerDirective);

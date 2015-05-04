@@ -37,7 +37,6 @@
 
     <ng-viewport></ng-viewport>
 
-    <script src="bower_components/requirejs/require.js"></script>
     <script src="bower_components/angular/angular.js"></script>
 
     <script src="bower_components/angular-animate/angular-animate.js"></script>
@@ -47,15 +46,17 @@
     <script src="bower_components/angular-new-router/dist/router.es5.js"></script>
     <script src="bower_components/angular-translate/angular-translate.js"></script>
 
-    <script src="scripts/scripts.js"></script>
+    <script src="bower_components/es6-module-loader/dist/es6-module-loader.js"></script>
+    <script src="bower_components/system.js/dist/system.js"></script>
 
     <script>
-      require(['app'], function () {
-        angular.bootstrap(document, ['test.app'], {
-          // TODO: Set this to true in release builds.
-          strictDi: false
-        });
+      System.config({
+        paths: {
+          '*': 'scripts/*.js'
+        }
       });
+      System.import('app');
     </script>
+
   </body>
 </html>

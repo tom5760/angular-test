@@ -14,21 +14,17 @@ var path = require('path');
 var size = require('gulp-size');
 var sourcemaps = require('gulp-sourcemaps');
 var ts = require('gulp-typescript');
-var wrap = require('gulp-wrap');
 
 //// TASKS
 
-// Appends a TypeScript directive to set the AMD module name.
-function prependModuleName(data) {
-  var file = path.relative(data.file.base, data.file.history[0]);
-  var name = path.dirname(file) + path.sep + path.basename(file, '.ts');
+var project = ts.createProject({
+  target: 'ES5',
+  module: 'commonjs',
+  emitDecoratorMetadata: true,
 
-  if (name.indexOf('./') === 0) {
-    name = name.substr(2);
-  }
-
-  return '/// <amd-module name="' + name + '" />\n<%= contents %>';
-}
+  noEmitOnError: true,
+  typescript: require('typescript')
+});
 
 function reporter(err) {
   console.error(err.message);
@@ -37,18 +33,11 @@ function reporter(err) {
 
 gulp.task('ts', function () {
   return gulp.src('app/**/*.ts')
-    .pipe(wrap(prependModuleName))
     .pipe(sourcemaps.init())
-    .pipe(ts({
-      target: 'ES5',
-      module: 'amd',
-      noEmitOnError: true,
-      typescript: require('typescript')
-    }, undefined, { error: reporter }))
 
-    .pipe(concat('scripts.js'))
+    .pipe(ts(project, undefined, { error: reporter }))
 
-    .pipe(sourcemaps.write('../maps'))
+    .pipe(sourcemaps.write())
     .pipe(gulp.dest('.tmp/scripts'))
 
     .pipe(size({ title: 'typescript' }))

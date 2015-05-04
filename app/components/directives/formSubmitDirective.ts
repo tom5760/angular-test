@@ -1,6 +1,6 @@
-/// <reference path="../../../bower_components/DefinitelyTyped/angularjs/angular.d.ts" />
+/// <reference path="../../../node_modules/DefinitelyTyped/angularjs/angular.d.ts" />
 
-import ToastService from 'components/utils/ToastService';
+import ToastService from '../utils/ToastService';
 
 /**
  * Provides a form-submit attribute directive, which executes an expression

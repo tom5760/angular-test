@@ -1,9 +1,9 @@
-/// <reference path="../../../bower_components/DefinitelyTyped/angularjs/angular.d.ts" />
+/// <reference path="../../../node_modules/DefinitelyTyped/angularjs/angular.d.ts" />
 
-import en from 'components/utils/en';
+import en from './en';
 
-import SiteTitleService from 'components/utils/SiteTitleService';
-import ToastService from 'components/utils/ToastService';
+import SiteTitleService from './SiteTitleService';
+import ToastService from './ToastService';
 
 var utils: ng.IModule = angular.module('test.utils', [
     'pascalprecht.translate',

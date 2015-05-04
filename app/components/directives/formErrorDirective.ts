@@ -1,4 +1,4 @@
-/// <reference path="../../../bower_components/DefinitelyTyped/angularjs/angular.d.ts" />
+/// <reference path="../../../node_modules/DefinitelyTyped/angularjs/angular.d.ts" />
 
 export default function formErrorDirective(): ng.IDirective {
   return {

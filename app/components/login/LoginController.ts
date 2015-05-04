@@ -1,8 +1,8 @@
-/// <reference path="../../../bower_components/DefinitelyTyped/angularjs/angular.d.ts" />
+/// <reference path="../../../node_modules/DefinitelyTyped/angularjs/angular.d.ts" />
 
-import SiteTitleService from 'components/utils/SiteTitleService';
-import ToastService from 'components/utils/ToastService';
-import UserService from 'components/model/UserService';
+import SiteTitleService from '../utils/SiteTitleService';
+import ToastService from '../utils/ToastService';
+import UserService from '../model/UserService';
 
 export default class LoginController {
 

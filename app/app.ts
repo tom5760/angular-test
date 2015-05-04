@@ -1,10 +1,10 @@
-/// <reference path="../bower_components/DefinitelyTyped/angularjs/angular.d.ts" />
-/// <reference path="../bower_components/DefinitelyTyped/angular-translate/angular-translate.d.ts" />
+/// <reference path="../node_modules/DefinitelyTyped/angularjs/angular.d.ts" />
+/// <reference path="../node_modules/DefinitelyTyped/angular-translate/angular-translate.d.ts" />
 
-import directives from 'components/directives/DirectivesModule';
-import login from 'components/login/LoginModule';
-import model from 'components/model/ModelModule';
-import utils from 'components/utils/UtilsModule';
+import directives from './components/directives/DirectivesModule';
+import login from './components/login/LoginModule';
+import model from './components/model/ModelModule';
+import utils from './components/utils/UtilsModule';
 
 class AppController {
   constructor($router) {
@@ -45,3 +45,6 @@ export default angular.module('test.app', [
   })
 
   .controller('AppController', AppController);
+
+// Bootstrap the app
+angular.bootstrap(document, ['test.app']);
