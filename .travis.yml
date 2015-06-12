@@ -1,15 +1,14 @@
 language: node_js
-node_js: '0.10'
+node_js: '0.12'
 addons:
   sauce_connect:
     username: "tom5760"
     access_key:
       secure: "C3l47GHSojlnIUFQmOJVRTSch+7Uk1rc0Iu3YFOZEQak/48Mb2Ox/jGsxn+4PRLl/jC6EqHIj4Sh4OAedr+BLbX1wY9XzJ6vOkrKFvvsmvgsUZrV6rH0ypv9yRCcC9hqFOdohJ2AcEjmk1NtLQJfqgZxGxzaJHkM6A4WNd0qFBA="
 install:
-  - npm install -g grunt-cli bower
+  - npm install -g gulp bower
   - npm install
   - bower install
 script:
-  - grunt jshint
-  - grunt test:unit
-  - grunt build
+  - gulp clean
+  - gulp jscs jshint tslint:dev scripts sass
