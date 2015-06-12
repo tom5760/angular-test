@@ -8,18 +8,14 @@
 
 var gulp = require('gulp');
 
-//var browserSync = require('./browserSync');
-//var tslint = require('gulp-tslint');
-//var util = require('util');
+var browserSync = require('./browserSync');
+var tslint = require('gulp-tslint');
+var util = require('util');
 
 //// CONFIG
 
 var RULES = {
   'class-name': true,
-  'comment-format': [
-    true,
-    'check-space'
-  ],
   curly: true,
   eofline: true,
   indent: [true, 4],
@@ -78,31 +74,28 @@ var RULES_PROD = require('util')._extend({}, {
 
 //// TASKS
 
-//function reporter(failures) {
-//    failures.forEach(function(failure) {
-//      var message = util.format('(tslint %s) %s[%d, %d]: %s',
-//        failure.ruleName, failure.name, failure.startPosition.line,
-//        failure.startPosition.character, failure.failure);
-//
-//      console.error(message);
-//      browserSync.notify(message, 5000);
-//    });
-//}
+function reporter(failures) {
+    failures.forEach(function(failure) {
+      var message = util.format('(tslint %s) %s[%d, %d]: %s',
+        failure.ruleName, failure.name, failure.startPosition.line,
+        failure.startPosition.character, failure.failure);
 
-// tslint disabled for now, waiting for TypeScript 1.5 support in upcoming
-// release.
-//function lint(rules) {
-//  return function () {
-//    return gulp.src('app/**/*.ts')
-//      .pipe(tslint({
-//        configuration: {
-//          rules: rules
-//        }
-//      }))
-//      .pipe(tslint.report(reporter));
-//  };
-//}
-function lint() {}
+      console.error(message);
+      browserSync.notify(message, 5000);
+    });
+}
+
+function lint(rules) {
+  return function () {
+    return gulp.src('app/**/*.ts')
+      .pipe(tslint({
+        configuration: {
+          rules: rules
+        }
+      }))
+      .pipe(tslint.report(reporter));
+  };
+}
 
 gulp.task('tslint:dev', lint(RULES));
 gulp.task('tslint:prod', lint(RULES_PROD));

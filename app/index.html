@@ -1,12 +1,12 @@
 <!doctype html>
-<html lang="en" ng-controller="AppController">
+<html lang="en" ng-app="test.app">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="An example/seed AngularJS project.">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title ng-bind="siteTitle">Angular Example</title>
+    <title ng-bind="siteTitle">TestApp</title>
 
     <!-- Add to homescreen -->
     <link rel="manifest" href="manifest.json">
@@ -35,7 +35,7 @@
 
   <body>
 
-    <ng-viewport></ng-viewport>
+    <ui-view></ui-view>
 
     <script src="bower_components/angular/angular.js"></script>
 
@@ -43,20 +43,10 @@
     <script src="bower_components/angular-aria/angular-aria.js"></script>
     <script src="bower_components/angular-material/angular-material.js"></script>
     <script src="bower_components/angular-messages/angular-messages.js"></script>
-    <script src="bower_components/angular-new-router/dist/router.es5.js"></script>
     <script src="bower_components/angular-translate/angular-translate.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
 
-    <script src="bower_components/es6-module-loader/dist/es6-module-loader.js"></script>
-    <script src="bower_components/system.js/dist/system.js"></script>
-
-    <script>
-      System.config({
-        paths: {
-          '*': 'scripts/*.js'
-        }
-      });
-      System.import('app');
-    </script>
+    <script src="scripts.js"></script>
 
   </body>
 </html>

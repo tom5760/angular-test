@@ -1,33 +1,13 @@
 /// <reference path="../node_modules/DefinitelyTyped/angularjs/angular.d.ts" />
 /// <reference path="../node_modules/DefinitelyTyped/angular-translate/angular-translate.d.ts" />
+/// <reference path="../node_modules/DefinitelyTyped/angular-ui-router/angular-ui-router.d.ts" />
 
-import directives from './components/directives/DirectivesModule';
-import login from './components/login/LoginModule';
-import model from './components/model/ModelModule';
-import utils from './components/utils/UtilsModule';
-
-class AppController {
-  constructor($router) {
-    $router.config([{
-      path: '/',
-      redirectTo: 'login'
-    }, {
-      path: '/login',
-      component: 'login'
-    }]);
-  }
-}
-
-export default angular.module('test.app', [
+angular.module('test.app', [
     'ngMaterial',
-    'ngNewRouter',
-
     'pascalprecht.translate',
+    'ui.router',
 
-    directives.name,
-    login.name,
-    model.name,
-    utils.name
+    'test.login',
   ])
 
   .config(function (
@@ -41,10 +21,34 @@ export default angular.module('test.app', [
     $translateProvider
       .useSanitizeValueStrategy('escaped')
       .determinePreferredLanguage()
-      .fallbackLanguage('en');
+      .fallbackLanguage('en')
+      .translations('en', {
+        SITE_TITLE: 'Test App'
+      });
   })
 
-  .controller('AppController', AppController);
+  .config(function ($urlRouterProvider: angular.ui.IUrlRouterProvider) {
+    $urlRouterProvider
+      .otherwise('/');
+  })
 
-// Bootstrap the app
-angular.bootstrap(document, ['test.app']);
+  .config(function ($stateProvider: angular.ui.IStateProvider) {
+    $stateProvider
+      .state('login', {
+        url: '/',
+        controller: 'LoginController',
+        controllerAs: 'login',
+        templateUrl: 'components/login/login.html',
+        data: {
+          title: 'LOGIN.TITLE'
+        }
+      })
+    ;
+  })
+
+  .run(function (SiteTitleService: SiteTitleService) {
+    angular.forEach(arguments, function (service) {
+      service.listen();
+    });
+  })
+;

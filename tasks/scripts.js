@@ -8,18 +8,18 @@
 
 var gulp = require('gulp');
 
-var browserSync = require('./browserSync');
 var concat = require('gulp-concat');
-var path = require('path');
 var size = require('gulp-size');
 var sourcemaps = require('gulp-sourcemaps');
 var ts = require('gulp-typescript');
+var wrap = require('gulp-wrap');
+
+var browserSync = require('./browserSync');
 
 //// TASKS
 
 var project = ts.createProject({
   target: 'ES5',
-  module: 'commonjs',
   emitDecoratorMetadata: true,
 
   noEmitOnError: true,
@@ -31,15 +31,20 @@ function reporter(err) {
   browserSync.notify(err.message, 5000);
 }
 
-gulp.task('ts', function () {
-  return gulp.src('app/**/*.ts')
+gulp.task('scripts', ['tslint:dev'], function () {
+  return gulp.src([
+      'app/**/*Module.ts',
+      'app/**/*.ts'
+    ])
     .pipe(sourcemaps.init())
 
     .pipe(ts(project, undefined, { error: reporter }))
+    .pipe(wrap('(function () {\n\'use strict\';\n<%= contents %>}());'))
+    .pipe(concat('scripts.js'))
 
     .pipe(sourcemaps.write())
-    .pipe(gulp.dest('.tmp/scripts'))
+    .pipe(gulp.dest('.tmp'))
 
-    .pipe(size({ title: 'typescript' }))
+    .pipe(size({ title: 'scripts' }))
     .pipe(browserSync.stream({ match: '**/*.js' }));
 });

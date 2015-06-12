@@ -1,10 +1,10 @@
 /// <reference path="../../../node_modules/DefinitelyTyped/angularjs/angular.d.ts" />
 
-export class User {
+class User {
   constructor(public email: string) {}
 }
 
-export default class UserService {
+class UserService {
   static LOGIN_DELAY: number = 1500;
 
   currentUser: User = null;
@@ -23,4 +23,8 @@ export default class UserService {
 
     this.currentUser = new User(email);
   }
-}
+};
+
+angular.module('test.model')
+  .factory('User', User)
+  .service('UserService', UserService);

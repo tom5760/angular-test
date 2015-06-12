@@ -14,7 +14,7 @@ var browserSync = require('./browserSync');
 //// TASKS
 
 gulp.task('serve', ['clean'], function () {
-  runSequence(['tslint:dev', 'ts', 'sass'], function () {
+  runSequence(['tslint:dev', 'scripts', 'sass'], function () {
     browserSync.init({
       ghostMode: false,
       server: {
@@ -30,7 +30,7 @@ gulp.task('serve', ['clean'], function () {
     gulp.watch('app/**/*.html', browserSync.reload);
     gulp.watch('app/images/**/*', browserSync.reload);
     gulp.watch('app/**/*.scss', ['sass']);
-    gulp.watch('app/**/*.ts', function () { runSequence('ts'); });
+    gulp.watch('app/**/*.ts', ['scripts']);
 
     gulp.watch(['gulpfile.js', 'tasks/**/*.js'], ['jscs', 'jshint']);
   });

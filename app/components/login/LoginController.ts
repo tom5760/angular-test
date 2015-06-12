@@ -1,11 +1,6 @@
 /// <reference path="../../../node_modules/DefinitelyTyped/angularjs/angular.d.ts" />
 
-import SiteTitleService from '../utils/SiteTitleService';
-import ToastService from '../utils/ToastService';
-import UserService from '../model/UserService';
-
-export default class LoginController {
-
+class LoginController {
   email: string;
   password: string;
   form: ng.IFormController;
@@ -15,10 +10,6 @@ export default class LoginController {
   constructor(private SiteTitleService: SiteTitleService,
               private ToastService: ToastService,
               private UserService: UserService) {}
-
-  activate() {
-    this.SiteTitleService.setTitleKey('LOGIN.TITLE');
-  }
 
   clearForm() {
     delete this.email;
@@ -35,7 +26,7 @@ export default class LoginController {
     this.busy = true;
     this.UserService.login(this.email, this.password)
       .then(() => this.onLoginSuccess(), (err) => this.onLoginError(err))
-      .finally(() => this.clearForm())
+      .finally(() => this.clearForm());
   }
 
   private onLoginSuccess() {
@@ -46,3 +37,6 @@ export default class LoginController {
     this.ToastService.showKey(err);
   }
 }
+
+angular.module('test.login')
+  .controller('LoginController', LoginController);
