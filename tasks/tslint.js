@@ -75,14 +75,14 @@ var RULES_PROD = require('util')._extend({}, {
 //// TASKS
 
 function reporter(failures) {
-    failures.forEach(function(failure) {
-      var message = util.format('(tslint %s) %s[%d, %d]: %s',
+  failures.forEach(function (failure) {
+    var message = util.format('(tslint %s) %s[%d, %d]: %s',
         failure.ruleName, failure.name, failure.startPosition.line,
         failure.startPosition.character, failure.failure);
 
-      console.error(message);
-      browserSync.notify(message, 5000);
-    });
+    console.error(message);
+    browserSync.notify(message, 5000);
+  });
 }
 
 function lint(rules) {
