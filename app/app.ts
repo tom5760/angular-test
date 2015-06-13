@@ -8,6 +8,7 @@ angular.module('test.app', [
     'ui.router',
 
     'test.login',
+    'test.main',
   ])
 
   .config(function (
@@ -15,6 +16,10 @@ angular.module('test.app', [
         $logProvider: ng.ILogProvider) {
     $compileProvider.debugInfoEnabled(true);
     $logProvider.debugEnabled(true);
+  })
+
+  .config(function ($locationProvider: ng.ILocationProvider) {
+    $locationProvider.html5Mode(true);
   })
 
   .config(function ($translateProvider: angular.translate.ITranslateProvider) {
@@ -29,18 +34,27 @@ angular.module('test.app', [
 
   .config(function ($urlRouterProvider: angular.ui.IUrlRouterProvider) {
     $urlRouterProvider
-      .otherwise('/');
+      .otherwise('/login');
   })
 
   .config(function ($stateProvider: angular.ui.IStateProvider) {
     $stateProvider
       .state('login', {
-        url: '/',
+        url: '/login',
         controller: 'LoginController',
         controllerAs: 'login',
-        templateUrl: 'components/login/login.html',
+        templateUrl: 'login/login.html',
         data: {
           title: 'LOGIN.TITLE'
+        }
+      })
+      .state('main', {
+        url: '/main',
+        controller: 'MainController',
+        controllerAs: 'main',
+        templateUrl: 'main/main.html',
+        data: {
+          title: 'MAIN.TITLE'
         }
       })
     ;

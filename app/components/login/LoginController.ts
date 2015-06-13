@@ -1,4 +1,5 @@
 /// <reference path="../../../node_modules/DefinitelyTyped/angularjs/angular.d.ts" />
+/// <reference path="../../../node_modules/DefinitelyTyped/angular-ui-router/angular-ui-router.d.ts" />
 
 class LoginController {
   email: string;
@@ -7,7 +8,8 @@ class LoginController {
 
   busy: boolean = false;
 
-  constructor(private SiteTitleService: SiteTitleService,
+  constructor(private $state: angular.ui.IStateService,
+              private SiteTitleService: SiteTitleService,
               private ToastService: ToastService,
               private UserService: UserService) {}
 
@@ -31,6 +33,7 @@ class LoginController {
 
   private onLoginSuccess() {
     console.log('LOGIN SUCCESS');
+    this.$state.go('main');
   }
 
   private onLoginError(err) {
